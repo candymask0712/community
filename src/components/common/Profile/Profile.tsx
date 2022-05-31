@@ -14,7 +14,7 @@ const Profile = ({ data }: Data) => {
 
   useEffect(() => {
     getRelativeWrittenAt();
-  }, []);
+  }, [writtenAt]);
 
   const getRelativeWrittenAt = () => {
     const date = new Date();
@@ -33,9 +33,6 @@ const Profile = ({ data }: Data) => {
       return year + '-' + month + '-' + day + ' ';
     }
 
-    // console.log('writtenAt', writtenAt);
-    // console.log('date', date);
-    // console.log('writtenAt', writtenAt, 'elapsedMin', elapsedMin);
     if (elapsedMin < 1) setWrittenAtDifference('방금 전');
     else if (elapsedMin >= 1 && elapsedMin < 60)
       setWrittenAtDifference(`${elapsedMin}분 전`);
@@ -53,8 +50,8 @@ const Profile = ({ data }: Data) => {
       <TextContainer>
         <Id>{writerNickName}</Id>
         <CatAndTimeContainer>
-          <Category>{categoryName} ・ </Category>
-          <UploadTime>{writtenAtDifference}</UploadTime>
+          <Category>{categoryName}</Category>
+          <UploadTime> ・ {writtenAtDifference}</UploadTime>
         </CatAndTimeContainer>
       </TextContainer>
     </Container>
