@@ -6,7 +6,6 @@ import Profile from '../components/common/Profile/Profile';
 
 const PostDetail = () => {
   const path = window.location.pathname.split('/')[3];
-  console.log('path', path);
 
   const [postData, setPostData] = useState<DataType>({
     categoryPk: 0,

@@ -29,9 +29,11 @@ const Title = styled.h2`
 `;
 
 const AddButtonContainer = styled.div`
+  /* position: sticky; */
   position: fixed;
+  /* width: 100%; */
   bottom: 16px;
-  right: 16px;
+  right: 60px;
 `;
 
 const Line = styled.hr`
@@ -57,16 +59,7 @@ const List = () => {
   return (
     <Container>
       <Title>커뮤니티</Title>
-      <AddButtonContainer>
-        <ButtonBasic
-          buttonClickHandler={clickButton}
-          backColor='#2C7FFF'
-          textColor='white'
-          height={10}
-        >
-          글쓰기✍
-        </ButtonBasic>
-      </AddButtonContainer>
+
       {/* <Category /> */}
       {/* <Category2 /> */}
 
@@ -79,6 +72,16 @@ const List = () => {
           </>
         );
       })}
+      <AddButtonContainer>
+        <ButtonBasic
+          buttonClickHandler={clickButton}
+          backColor='#2C7FFF'
+          textColor='white'
+          height={10}
+        >
+          글쓰기✍
+        </ButtonBasic>
+      </AddButtonContainer>
     </Container>
   );
 };

@@ -22,11 +22,17 @@ const Post = ({ data }: Data) => {
           )
         ) : null}
         <PostInfo>
-          <PostInfoIcon src='img/eye.png'></PostInfoIcon>
+          <PostInfoIcon
+            src={`${process.env.PUBLIC_URL}/img/eye.png`}
+          ></PostInfoIcon>
           <PostInfoCount>{data.viewCount}</PostInfoCount>
-          <PostInfoIcon src='img/thumb.png'></PostInfoIcon>
+          <PostInfoIcon
+            src={`${process.env.PUBLIC_URL}/img/thumb.png`}
+          ></PostInfoIcon>
           <PostInfoCount>{data.likeCount}</PostInfoCount>
-          <PostInfoIcon src='img/chat.png'></PostInfoIcon>
+          <PostInfoIcon
+            src={`${process.env.PUBLIC_URL}/img/chat.png`}
+          ></PostInfoIcon>
           <PostInfoCount>{data.commentCount}</PostInfoCount>
         </PostInfo>
       </Container>

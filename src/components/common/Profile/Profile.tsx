@@ -60,7 +60,7 @@ const Profile = ({ data }: Data) => {
 
 const Container = styled.div`
   display: flex;
-  margin: 50px 0px 0px 32px;
+  margin: 11px 0px 0px 32px;
 `;
 const ImgBackground = styled.div`
   background-color: pink;
