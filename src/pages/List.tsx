@@ -3,8 +3,6 @@ import ButtonBasic from '../components/common/Button/ButtonBasic';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Post from '../components/List/Post';
-import Category from '../components/List/Category';
-import Category2 from '../components/List/Category2';
 import Profile from '../components/common/Profile/Profile';
 
 export type DataType = {
@@ -16,7 +14,7 @@ export type DataType = {
   viewCount: number;
   likeCount: number;
   commentCount: number;
-  imageUrl: string | null;
+  imageUrl: string | null | [];
   writtenAt: string;
   writerNickName: string;
   writerProfileUrl: string;
@@ -41,6 +39,7 @@ const Line = styled.hr`
   background-color: #e8e8e8;
   border: 0;
 `;
+
 const List = () => {
   const clickButton = () => {};
   const [posts, setPosts] = useState([]);
@@ -52,7 +51,6 @@ const List = () => {
       data: {}
     }).then((reponse) => {
       setPosts(reponse.data);
-      console.log(reponse.data);
     });
   }, []);
 
@@ -73,7 +71,6 @@ const List = () => {
       {/* <Category2 /> */}
 
       {posts.map((el) => {
-        // console.log(el);
         return (
           <>
             <Profile data={el} />
