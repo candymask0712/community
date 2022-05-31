@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { DataType } from '../../pages/List';
+import { Link } from 'react-router-dom';
 
 type Data = {
   data: DataType;
@@ -7,23 +8,38 @@ type Data = {
 
 const Post = ({ data }: Data) => {
   return (
-    <Container>
-      <Title>{data.title}</Title>
-      <Content>{data.content}</Content>
-      {data.imageUrl ? <Img src={data.imageUrl} /> : null}
-      <PostInfo>
-        <PostInfoIcon src='img/eye.png'></PostInfoIcon>
-        <PostInfoCount>{data.viewCount}</PostInfoCount>
-        <PostInfoIcon src='img/thumb.png'></PostInfoIcon>
-        <PostInfoCount>{data.likeCount}</PostInfoCount>
-        <PostInfoIcon src='img/chat.png'></PostInfoIcon>
-        <PostInfoCount>{data.commentCount}</PostInfoCount>
-      </PostInfo>
-    </Container>
+    <StLink to={`/community/post/${data.pk}`}>
+      <Container>
+        <Title>{data.title}</Title>
+        <Content>{data.content}</Content>
+        {data.imageUrl ? (
+          Array.isArray(data.imageUrl) ? (
+            data.imageUrl.map((el) => {
+              return <Img src={el} />;
+            })
+          ) : (
+            <Img src={data.imageUrl} />
+          )
+        ) : null}
+        <PostInfo>
+          <PostInfoIcon src='img/eye.png'></PostInfoIcon>
+          <PostInfoCount>{data.viewCount}</PostInfoCount>
+          <PostInfoIcon src='img/thumb.png'></PostInfoIcon>
+          <PostInfoCount>{data.likeCount}</PostInfoCount>
+          <PostInfoIcon src='img/chat.png'></PostInfoIcon>
+          <PostInfoCount>{data.commentCount}</PostInfoCount>
+        </PostInfo>
+      </Container>
+    </StLink>
   );
 };
 
 export default Post;
+
+const StLink = styled(Link)`
+  all: unset;
+  cursor: pointer;
+`;
 
 const Container = styled.div`
   margin: 19px 28px 25px 28px;
@@ -77,8 +93,4 @@ const PostInfoCount = styled.div`
   color: #7a7a7a;
   /* font-size: 14px; */
   font-weight: 500;
-`;
-
-const Line = styled.hr`
-  height: 6px;
 `;
