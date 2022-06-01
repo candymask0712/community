@@ -5,7 +5,7 @@ import axios from 'axios';
 import Post from '../components/List/Post';
 import Profile from '../components/common/Profile/Profile';
 import Category from '../components/List/Category';
-import Category2 from '../components/List/Category2';
+import { useNavigate } from 'react-router-dom';
 
 export type DataType = {
   categoryPk: number;
@@ -31,9 +31,7 @@ const Title = styled.h2`
 `;
 
 const AddButtonContainer = styled.div`
-  /* position: sticky; */
   position: fixed;
-  /* width: 100%; */
   bottom: 16px;
   right: 60px;
 `;
@@ -49,6 +47,8 @@ type TmpType = {
 };
 
 const List = () => {
+  const navigate = useNavigate();
+
   const clickButton = () => {};
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState<any>({});
@@ -107,7 +107,9 @@ const List = () => {
       })}
       <AddButtonContainer>
         <ButtonBasic
-          buttonClickHandler={clickButton}
+          buttonClickHandler={() => {
+            navigate('/community/post/new');
+          }}
           backColor='#2C7FFF'
           textColor='white'
           height={10}

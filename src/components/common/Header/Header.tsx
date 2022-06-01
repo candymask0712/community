@@ -4,7 +4,7 @@ import HeaderForAddPost from './HeaderForAddPost';
 import HeaderForPostDetail from './HeaderForPostDetail';
 
 import { useEffect } from 'react';
-const Header = () => {
+const Header = ({ sendPostData }: any) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -17,7 +17,8 @@ const Header = () => {
   const changingArea = () => {
     if (path === 'post') {
       let detailedPath = location.pathname.split('/')[3];
-      if (detailedPath === 'new') return <HeaderForAddPost />;
+      if (detailedPath === 'new')
+        return <HeaderForAddPost sendPostData={sendPostData} />;
       else return <HeaderForPostDetail />;
     } else return null;
   };
@@ -44,9 +45,8 @@ export default Header;
 
 const Container = styled.div`
   height: 56px;
-  padding: 0px 0px 0px 21px;
+  padding: 15px 10px 0px 21px;
   display: flex;
-  /* background-color: yellow; */
   align-items: center;
 `;
 const BackButton = styled.div``;
@@ -54,4 +54,6 @@ const BackButtonIcon = styled.img`
   width: 25px;
   object-fit: contain;
 `;
-const ChangingContainer = styled.div``;
+const ChangingContainer = styled.div`
+  width: 100%;
+`;

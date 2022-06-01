@@ -5,11 +5,12 @@ import List from './pages/List';
 import NotFound from './pages/NotFound';
 import PostDetail from './pages/PostDetail';
 import Main from './pages/Main';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
-function ScrollToTop() {
+function ScrollToTop(): null {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -20,11 +21,29 @@ function ScrollToTop() {
 }
 
 function Router() {
+  const [categoryData, setCategoryData] = useState(1);
+  const [titleData, setTitleData] = useState('');
+  const [contentData, setContentData] = useState('');
+  const [imageData, setImageData] = useState([]);
+
+  const sendPostData = () => {
+    axios
+      .post('http://localhost:8080/posts', {
+        category: categoryData,
+        title: titleData,
+        content: contentData,
+        image: imageData
+      })
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
   return (
     <GlobalBackground>
       <GlobalContainer>
         <BrowserRouter>
-          <Header />
+          <Header sendPostData={sendPostData} />
           <ScrollToTop />
           <Routes>
             <Route path='/' element={<Main />}></Route>
@@ -33,7 +52,17 @@ function Router() {
               path='/community/post/:post_pk'
               element={<PostDetail />}
             ></Route>
-            <Route path='/community/post/new' element={<AddPost />}></Route>
+            <Route
+              path='/community/post/new'
+              element={
+                <AddPost
+                  setCategoryData={setCategoryData}
+                  setTitleData={setTitleData}
+                  setContentData={setContentData}
+                  setImageData={setImageData}
+                />
+              }
+            ></Route>
             <Route path='*' element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>
