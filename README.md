@@ -1,12 +1,15 @@
+**코드가 포함 된 파일이 메일 첨부가 되지 않는 문제가 있어 부득이하게 github 업로드 하였습니다**
+**깃허브 업로드로 인해 달라진 부분이 있어 12시 이후 readme만 수정하였습니다 **
+
 ## 실행방법
 
-### 클라이언트 (/callbus)
-
+### 클라이언트 
+(최상위 디렉토리에서)
 1. `npm install` 로 의존성 모듈 설치
 2. `npm run start` 로 클라이언트 실행 (http://localhost:3000/)
 
-### 서버 (/callbus/server)
-
+### 서버 
+(최상위 디렉토리에서 server 디렉토리로 이동 후)
 1. `npm install` 로 의존성 모듈 설치
 2. `npm run start` 로 서버 실행 (http://localhost:8080/)
 
