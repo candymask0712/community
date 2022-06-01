@@ -30,7 +30,7 @@ const Category2 = () => {
     <>
       <Swiper
         slidesPerView={'auto'}
-        // centeredSlides={true}
+        centeredSlides={true}
         spaceBetween={4}
         pagination={{
           clickable: true
